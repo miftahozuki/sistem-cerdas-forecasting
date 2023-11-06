@@ -35,3 +35,8 @@
 <script type="text/javascript" src="{{asset('assets/pages/dashboard.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/pages/elements.js')}}"></script>
 <script src="{{asset('assets/js/menu.min.js')}}"></script>
+
+<script src="{{asset('assets/pages/chart-morris.js')}}"></script>
+<script src="{{asset('assets/plugins/raphael/raphael.min.js')}}"></script>
+<script src="{{asset('assets/plugins/morris.js/morris.js')}}"></script>
+{{-- <script src="assets/plugins/Waves/waves.min.js"></script> --}}

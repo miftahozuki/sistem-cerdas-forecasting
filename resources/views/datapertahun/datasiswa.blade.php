@@ -18,7 +18,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-header-text">Data Jumlah Siswa</h5>
-                        <a href="{{route('datasiswa.create')}}" class="btn-sm btn-info" style="float: right"><i class="icon-plus"></i> Tambah</a>
+                        <a href="#" class="btn-sm btn-info" style="float: right"><i class="icon-plus"></i> Tambah</a>
                         {{-- <p>Basic example <code>without any additional modification</code> classes</p> --}}
                     </div>
                     <div class="card-block">
@@ -28,7 +28,6 @@
                                     <thead style="background-color:dimgrey">
                                         <tr style="color:white">
                                             <th>No.</th>
-                                            <th>Nama Jurusan</th>
                                             <th>Tahun</th>
                                             <th>Jumlah Siswa</th>
                                             <th>Aksi</th>
@@ -41,7 +40,6 @@
                                         @foreach ($data as $d)
                                         <tr>
                                             <td>{{$no++}}</td>
-                                            <td>{{$d->jurusan}}</td>
                                             <td>{{$d->tahun}}</td>
                                             <td>{{$d->jumlahsiswa}}</td>
                                             <td>

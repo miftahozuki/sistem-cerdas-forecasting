@@ -12,8 +12,8 @@
         <div class="col-lg-3 col-md-6">
             <div class="card dashboard-product">
                 <span>Jumlah Seluruh Siswa</span>
-                <h2 class="dashboard-total-products">4500</h2>
-                <span class="label label-warning">Sales</span>Arriving Today
+                <h2 class="dashboard-total-products">{{$a}}</h2>
+                <span class="label label-warning">Akuntansi</span>
                 <div class="side-box">
                     <i class="ti-server text-warning-color"></i>
                 </div>
@@ -21,34 +21,54 @@
         </div>
         <div class="col-lg-3 col-md-6">
             <div class="card dashboard-product">
-                <span>Products</span>
-                <h2 class="dashboard-total-products">37,500</h2>
-                <span class="label label-primary">Views</span>View Today
+                <span>Jumlah Seluruh Siswa</span>
+                <h2 class="dashboard-total-products">{{$b}}</h2>
+                <span class="label label-primary">Teknik Kendaraan Ringan Otomotif</span>
                 <div class="side-box ">
-                    <i class="ti-gift text-primary-color"></i>
+                    <i class="ti-server text-primary-color"></i>
                 </div>
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
             <div class="card dashboard-product">
-                <span>Products</span>
-                <h2 class="dashboard-total-products">$<span>30,780</span></h2>
-                <span class="label label-success">Sales</span>Reviews
+                <span>Jumlah Seluruh Siswa</span>
+                <h2 class="dashboard-total-products">{{$c}}</h2>
+                <span class="label label-success">Teknik dan Bisnis Sepeda Motor</span>
                 <div class="side-box">
-                    <i class="ti-direction-alt text-success-color"></i>
+                    <i class="ti-server text-success-color"></i>
                 </div>
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
             <div class="card dashboard-product">
-                <span>Products</span>
-                <h2 class="dashboard-total-products">$<span>30,780</span></h2>
-                <span class="label label-danger">Sales</span>Reviews
+                <span>Jumlah Seluruh Siswa</span>
+                <h2 class="dashboard-total-products">{{$d}}</h2>
+                <span class="label label-danger">Teknik Audio Video</span>
                 <div class="side-box">
-                    <i class="ti-rocket text-danger-color"></i>
+                    <i class="ti-server text-danger-color"></i>
                 </div>
             </div>
         </div>
+        {{-- <div class="col-lg-3 col-md-6">
+            <div class="card dashboard-product">
+                <span>Jumlah Seluruh Siswa</span>
+                <h2 class="dashboard-total-products">{{$e}}</h2>
+                <span class="label label-primary">Teknik Komputer dan Jaringan</span>
+                <div class="side-box">
+                    <i class="ti-server text-primary-color"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="card dashboard-product">
+                <span>Jumlah Seluruh Siswa</span>
+                <h2 class="dashboard-total-products">{{$f}}</h2>
+                <span class="label label-info">Multimedia</span>
+                <div class="side-box">
+                    <i class="ti-server text-info-color"></i>
+                </div>
+            </div>
+        </div> --}}
     </div>
     <!-- 4-blocks row end -->
 

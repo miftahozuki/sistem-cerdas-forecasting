@@ -26,11 +26,12 @@
                             <div class="form-group">
                                 <label for="exampleSelect1" class="form-control-label">Tahun Periode</label>
                                 <select class="form-control " id="exampleSelect1">
-                                    <option>2017</option>
-                                    <option>2018</option>
                                     <option>2019</option>
                                     <option>2020</option>
                                     <option>2021</option>
+                                    <option>2022</option>
+                                    <option>2023</option>
+                                    <option>2024</option>
                                 </select>
                             </div>
 
@@ -61,23 +62,40 @@
                                         <tr style="color:white">
                                             <th>No.</th>
                                             <th>Tahun</th>
-                                            <th>Jumlah Siswa</th>
-                                            <th>Aksi</th>
+                                            <th>x</th>
+                                            <th>y</th>
+                                            <th>x*y</th>
+                                            <th>x^2</th>
+                                            <th>y'</th>
+                                            <th>y-y'</th>
                                         </tr>
                                     </thead>
                                     <tbody style="background-color:wheat">
+                                        @php
+                                            $no = 1;
+                                        @endphp
+                                        @foreach ($data as $d)
+                                            <tr>
+                                                <td>{{ $no++ }}</td>
+                                                <td>{{ $d->tahun }}</td>
+                                                <td>{{ $d->x }}</td>
+                                                <td>{{ $d->y }}</td>
+                                                <td>{{ $d->z }}</td>
+                                                <td>{{ $d->a }}</td>
+                                                <td>{{ $d->b }}</td>
+                                                <td>{{ $d->c }}</td>
+                                            </tr>
+                                        @endforeach
                                         <tr>
-                                            <td>1</td>
-                                            <td>2019</td>
-                                            <td>634</td>
-                                            <td>
-                                                <a class="btn-sm btn-warning" href="#"><i class="ti-pencil-alt"></i>
-                                                    Edit</a>
-                                                <a class="btn-sm btn-danger" href="#"><i class="ti-trash"></i>
-                                                    Hapus</a>
-                                            </td>
+                                            <td></td>
+                                            <td>Jumlah</td>
+                                            <td>{{ $x }}</td>
+                                            <td>{{ $y }}</td>
+                                            <td>{{ $z }}</td>
+                                            <td>{{ $a }}</td>
+                                            <td></td>
+                                            <td>{{ $c }}</td>
                                         </tr>
-
                                     </tbody>
                                 </table>
                             </div>
@@ -89,17 +107,29 @@
             </div>
 
             <!-- 1-3-block row start -->
-            
-                <div class="col-lg-12">
+
+            {{-- <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="card-header-text">Grafik Jumlah Siswa</h5>
+                            <h5 class="card-header-text"></h5>
                         </div>
                         <div class="card-block">
                             <div id="barchart" style="min-width: 250px; height: 330px; margin: 0 auto"></div>
                         </div>
                     </div>
+                </div> --}}
+            <!-- Line Chart start -->
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-header-text">Grafik Data Siswa</h5>
+                    </div>
+                    <div class="card-block">
+                        <div id="line-example"></div>
+                    </div>
                 </div>
+            </div>
+            <!-- Line Chart end -->
             <!-- 1-3-block row end -->
         </div>
 

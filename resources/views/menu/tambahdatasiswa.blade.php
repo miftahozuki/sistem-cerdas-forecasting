@@ -25,14 +25,43 @@
                         <form action="{{route('datasiswa.store')}}" method="POST">
                             @csrf
                             <div class="form-group">
+                                <label for="exampleSelect1" class="form-control-label">Nama Jurusan</label>
+                                <select class="form-control " id="exampleSelect1" name="jurusan" required>
+                                    <option value>Pilih Jurusan</option>
+                                    <option value="Teknik Otomotif">Teknik Otomotif</option>
+                                    <option value="Teknik Sepeda Motor">Teknik Sepeda Motor</option>
+                                    <option value="Teknik Elektronika">Teknik Elektronika</option>
+                                    <option value="Teknik Jaringan Komputer dan Telekomunikasi">Teknik Jaringan Komputer dan Telekomunikasi</option>
+                                    <option value="Teknik Kendaraan Ringan Otomotif">Teknik Kendaraan Ringan Otomotif</option>
+                                    <option value="Teknik Kendaraan Ringan">Teknik Kendaraan Ringan</option>
+                                    <option value="Teknik Komputer dan Jaringan">Teknik Komputer dan Jaringan</option>
+                                    <option value="Teknik dan Bisnis Sepeda Motor">Teknik dan Bisnis Sepeda Motor</option>
+                                    <option value="Teknik Audio Video">Teknik Audio Video</option>
+                                    <option value="Manajemen Perkantoran dan Layanan Bisnis">Manajemen Perkantoran dan Layanan Bisnis</option>
+                                    <option value="Manajemen Perkantoran">Manajemen Perkantoran</option>
+                                    <option value="Akuntansi">Akuntansi</option>
+                                    <option value="Akuntansi dan Keuangan Lembaga">Akuntansi dan Keuangan Lembaga</option>
+                                    <option value="Desain Komukasi Visual">Desain Komukasi Visual</option>
+                                    <option value="Multimedia">Multimedia</option>
+                                    <option value="Otomatisasi dan Tata Kelola Perkantoran">Otomatisasi dan Tata Kelola Perkantoran</option>
+                                </select>
+                                @if ($errors->has('jurusan'))
+                                    <span class="text-danger small">
+                                        <p>{{$errors->first('jurusan')}}</p>
+                                    </span>
+                                @endif
+                            </div>
+                            <div class="form-group">
                                 <label for="exampleSelect1" class="form-control-label">Tahun</label>
                                 <select class="form-control " id="exampleSelect1" name="tahun" required>
                                     <option value>Pilih Tahun</option>
-                                    <option value="2017">2017</option>
                                     <option value="2018">2018</option>
                                     <option value="2019">2019</option>
                                     <option value="2020">2020</option>
                                     <option value="2021">2021</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
                                 </select>
                                 @if ($errors->has('tahun'))
                                     <span class="text-danger small">

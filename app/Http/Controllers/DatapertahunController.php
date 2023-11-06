@@ -2,23 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\perhitungan;
+use App\Models\datasiswa;
 use Illuminate\Http\Request;
 
-class PeramalanController extends Controller
+class DatapertahunController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data = perhitungan::all();
-        $x = perhitungan::sum('x');
-        $y = perhitungan::sum('y');
-        $z = perhitungan::sum('z');
-        $a = perhitungan::sum('a');
-        $c = perhitungan::sum('c');
-        return view('menu.peramalan',compact('data','x','y','z','a','c'));
+        $data = datasiswa::paginate(10);
+        return view('datapertahun.datasiswa',compact('data'));
     }
 
     /**

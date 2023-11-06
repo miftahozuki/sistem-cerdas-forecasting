@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class datasiswa extends Model
+class perhitungan extends Model
 {
     // use HasFactory;
-    protected $table = 'datasiswas';
+    protected $table = 'perhitungans';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'jurusan','tahun','jumlahsiswa'
+        'tahun','x','y','z','a','b','c'
     ];
 }

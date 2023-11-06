@@ -33,11 +33,13 @@ class DatasiswaController extends Controller
             'required' => 'Input :attribute harus diisi!!!',
         ];
         $this->validate($request, [
+            'jurusan' => 'required',
             'tahun' => 'required',
             'jumlahsiswa' => 'required|numeric'
         ], $messages);
 
         $post = new datasiswa();
+        $post->jurusan = $request->input('jurusan');
         $post->tahun = $request->input('tahun');
         $post->jumlahsiswa = $request->input('jumlahsiswa');
         $post->save();
