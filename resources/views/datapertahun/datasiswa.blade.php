@@ -43,15 +43,22 @@
                                             <td>{{$d->tahun}}</td>
                                             <td>{{$d->jumlahsiswa}}</td>
                                             <td>
-                                                <a class="btn-sm btn-warning" href="#"><i class="ti-pencil-alt"></i> Edit</a>
-                                                <a class="btn-sm btn-danger" href="#"><i class="ti-trash"></i> Hapus</a>
+                                                <div class="btn-group">
+                                                    <form action="{{ route('datapertahun.destroy',$d->id) }}" method="POST">
+                                                    {{-- <a href="{{ route('pendidikan.edit',$row->id) }}" class="btn btn-warning me-1"><i class="fa fa-edit"></i></a> --}}
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="ti-trash"></i></button>
+                                                    </form>
+                                                </div>
+                                                {{-- <a class="btn-sm btn-warning" href="#"><i class="ti-pencil-alt"></i> Edit</a> --}}
+                                                
                                             </td>
                                         </tr>
                                         @endforeach
 
                                     </tbody>
                                 </table>
-                                {{$data->links()}}
                             </div>
                         </div>
                     </div>

@@ -22,17 +22,10 @@
                     </div>
 
                     <div class="card-block">
-                        <form>
+                        <form action="{{ route('peramalan.index') }}">
                             <div class="form-group">
-                                <label for="exampleSelect1" class="form-control-label">Tahun Periode</label>
-                                <select class="form-control " id="exampleSelect1">
-                                    <option>2019</option>
-                                    <option>2020</option>
-                                    <option>2021</option>
-                                    <option>2022</option>
-                                    <option>2023</option>
-                                    <option>2024</option>
-                                </select>
+                                <label for="tahun" class="form-control-label">Tahun Periode</label>
+                                <input type="text" class="form-control yearpicker" id="tahun" name="tahun" readonly>
                             </div>
 
                             <div class="row">
@@ -47,11 +40,35 @@
             </div>
             <!--Horizontal Form ends-->
 
+            @if (isset($caridata))
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-header-text">Hasil</h5>
+                        <p>Perkiraan jumlah siswa untuk tahun {{ $tahun }} adalah: {{ $a + $b * $caridata }}</p>
+                        <p>Berdasarkan persamaan Regresi</p>
+                        <h3>Y = a + b (x)</h3>
+                        <p>a = {{ $a }}</p>
+                        <p>b = {{ $b }}</p>
+                        <p>Y = {{ $a }} + {{ $b }} ({{ $caridata }})</p>
+                        <p> = {{ $a + $b * $caridata }}</p>
+                        <p>dengan MAPE sebesar :  {{ $mape }} %</p>
+                        <h4>MAPE = (Σ |(Actual - Forecast)| / Σ Actual) * 100%</h4>
+                    </div>
+                    <div class="card-block">
+                        <div id="ex">
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            @endif
+
             <div class="col-sm-12">
                 <!-- Basic Table starts -->
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-header-text">Data Jumlah Siswa</h5>
+                        <h5 class="card-header-text">Perhitungan Tabel Regresi</h5>
                         {{-- <p>Basic example <code>without any additional modification</code> classes</p> --}}
                     </div>
                     <div class="card-block">
@@ -74,30 +91,42 @@
                                         @php
                                             $no = 1;
                                         @endphp
-                                        @foreach ($data as $d)
+                                        {{-- @foreach ($data as $d)
                                             <tr>
                                                 <td>{{ $no++ }}</td>
                                                 <td>{{ $d->tahun }}</td>
-                                                <td>{{ $d->x }}</td>
-                                                <td>{{ $d->y }}</td>
-                                                <td>{{ $d->z }}</td>
-                                                <td>{{ $d->a }}</td>
-                                                <td>{{ $d->b }}</td>
-                                                <td>{{ $d->c }}</td>
+                                                <td>{{ $no -1 }}</td>
+                                                <td>{{ $d->jumlahsiswa }}</td>
+                                                <td>{{ ($no -1) * $d->jumlahsiswa }}</td>
+                                                <td>{{ pow($no -1, 2)}}</td>
                                             </tr>
-                                        @endforeach
+                                        @endforeach --}}
+                                        @foreach($year as $index => $tahun)
+                                        <tr>
+                                            <td>{{ $no++ }}</td>
+                                            <td>{{ $tahun }}</td>
+                                            <td>{{ $x[$index] }}</td>
+                                            <td>{{ $y[$index] }}</td>
+                                            <td>{{ $x[$index] * $y[$index] }}</td>
+                                            <td>{{ pow($x[$index],2) }}</td>
+                                            <td>{{ $a + $b * $x[$index] }}</td>
+                                            <td>{{ abs($y[$index] - $dataForecast[$index]) }}</td>
+                                        </tr>
+                                    @endforeach
                                         <tr>
                                             <td></td>
                                             <td>Jumlah</td>
-                                            <td>{{ $x }}</td>
-                                            <td>{{ $y }}</td>
-                                            <td>{{ $z }}</td>
-                                            <td>{{ $a }}</td>
+                                            <td>{{ $jumlahX }}</td>
+                                            <td>{{ $jumlahY }}</td>
+                                            <td>{{ $jumlahXY }}</td>
+                                            <td>{{ $jumlahX2 }}</td>
                                             <td></td>
-                                            <td>{{ $c }}</td>
+                                            <td>{{ $jumlahSelisih }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
+                                <p>a (intersep) : {{ $a }}</p>
+                                <p>b (slope) : {{ $b }}</p>
                             </div>
                         </div>
                     </div>
@@ -105,6 +134,7 @@
                 <!-- Basic Table ends -->
 
             </div>
+            
 
             <!-- 1-3-block row start -->
 
@@ -122,18 +152,59 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-header-text">Grafik Data Siswa</h5>
+                        <h5 class="card-header-text">Data Aktual X Peramalan</h5>
                     </div>
+                    
                     <div class="card-block">
-                        <div id="line-example"></div>
+                        <div id="forecast" style="height: 250px;">
+                        </div>
                     </div>
+                    
                 </div>
+                
             </div>
+            
             <!-- Line Chart end -->
             <!-- 1-3-block row end -->
+            
         </div>
 
         <!-- Main content ends -->
     </div>
     <!-- Container-fluid ends -->
+    
 @endsection('content')
+
+@push('scripts')
+<script>
+  var dataAktual = @json($y);
+  var dataForecast = @json($dataForecast);
+  var year = @json($year);
+  
+  var chartData = [];
+  for (var i = 0; i < year.length; i++) {
+      chartData.push({
+          year: year[i],
+          valueA: dataAktual[i],
+          valueB: dataForecast[i]
+      });
+  }
+  
+  new Morris.Line({
+      element: 'forecast',
+      data: chartData,
+      xkey: 'year',
+      ykeys: ['valueA', 'valueB'],
+      labels: ['Data Aktual', 'Data Peramalan']
+  });
+
+  $(document).ready(function() {
+    $('.yearpicker').datepicker({
+        format: "yyyy",
+        viewMode: "years",
+        minViewMode: "years",
+        autoclose: true
+    });
+});
+  </script>
+@endpush

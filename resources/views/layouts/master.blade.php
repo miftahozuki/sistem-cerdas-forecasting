@@ -369,6 +369,7 @@
     <!-- Warning Section Ends -->
 
     @include('layouts.script')
+    @stack('scripts')
     <script>
         var $window = $(window);
         var nav = $('.fixed-button');
@@ -386,6 +387,7 @@
             window.history.back();
         }
     </script>
+    
     
 
 </body>

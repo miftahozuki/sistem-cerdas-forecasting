@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\datasiswa;
+use App\Models\data_siswa;
 use Illuminate\Http\Request;
 
 class DatapertahunController extends Controller
@@ -12,7 +12,7 @@ class DatapertahunController extends Controller
      */
     public function index()
     {
-        $data = datasiswa::paginate(10);
+        $data = data_siswa::orderBy('tahun', 'asc')->get();
         return view('datapertahun.datasiswa',compact('data'));
     }
 
@@ -59,8 +59,10 @@ class DatapertahunController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $siswa = data_siswa::findOrFail($id);
+        $siswa->delete();
+        return redirect()->route('datapertahun.index');
     }
 }
