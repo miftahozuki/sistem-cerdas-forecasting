@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DatasiswaController;
 use App\Http\Controllers\PeramalanController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DataperjurusanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ use App\Http\Controllers\DashboardController;
 Route::get('/', function () {
     return view('utama');
 });
+
 
 //Kode Jurusan:
 //a = akuntansi
@@ -48,6 +50,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('dashboard', DashboardController::class);
     Route::resource('datasiswa',DatasiswaController::class);
     Route::resource('peramalan',PeramalanController::class);
+    Route::resource('jurusan', DataperjurusanController::class);
     Route::resource('datapertahun',DatapertahunController::class);
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

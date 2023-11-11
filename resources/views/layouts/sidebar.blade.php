@@ -17,7 +17,7 @@
             </li> --}}
             <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-docs"></i><span>Data Jumlah Siswa</span><i class="icon-arrow-down"></i></a>
                 <ul class="treeview-menu">
-                    <li><a class="waves-effect waves-dark" href="{{route('datasiswa.index')}}"><i class="icon-arrow-right"></i> Data Perjurusan</a></li>
+                    <li><a class="waves-effect waves-dark" href="/jurusan"><i class="icon-arrow-right"></i> Data Perjurusan</a></li>
                     <li><a class="waves-effect waves-dark" href="{{route('datapertahun.index')}}"><i class="icon-arrow-right"></i> Data Pertahun</a></li>
                 </ul>
             </li>
