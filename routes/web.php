@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DatasiswaController;
 use App\Http\Controllers\PeramalanController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,19 +32,20 @@ Route::get('/', function () {
 //f = Multimedia
 
 
-Route::get('/dashboard', function () {
-    return view('beranda',
-            ['a'=> datasiswa::where('jurusan','Akuntansi')->sum('jumlahsiswa'),
-            'b'=> datasiswa::where('jurusan', 'Teknik Kendaraan Ringan Otomotif')->sum('jumlahsiswa'),
-            'c'=> datasiswa::where('jurusan', 'Teknik dan Bisnis Sepeda Motor')->sum('jumlahsiswa'),
-            'd'=> datasiswa::where('jurusan', 'Teknik Audio Video')->sum('jumlahsiswa'),
-            'e'=> datasiswa::where('jurusan', 'Teknik Komputer dan Jaringan')->sum('jumlahsiswa'),
-            'f'=> datasiswa::where('jurusan', 'Multimedia')->sum('jumlahsiswa'),
-            ]
-    );
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('beranda',
+//             ['a'=> datasiswa::where('jurusan','Akuntansi')->sum('jumlahsiswa'),
+//             'b'=> datasiswa::where('jurusan', 'Teknik Kendaraan Ringan Otomotif')->sum('jumlahsiswa'),
+//             'c'=> datasiswa::where('jurusan', 'Teknik dan Bisnis Sepeda Motor')->sum('jumlahsiswa'),
+//             'd'=> datasiswa::where('jurusan', 'Teknik Audio Video')->sum('jumlahsiswa'),
+//             'e'=> datasiswa::where('jurusan', 'Teknik Komputer dan Jaringan')->sum('jumlahsiswa'),
+//             'f'=> datasiswa::where('jurusan', 'Multimedia')->sum('jumlahsiswa'),
+//             ]
+//     );
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::resource('dashboard', DashboardController::class);
     Route::resource('datasiswa',DatasiswaController::class);
     Route::resource('peramalan',PeramalanController::class);
     Route::resource('datapertahun',DatapertahunController::class);

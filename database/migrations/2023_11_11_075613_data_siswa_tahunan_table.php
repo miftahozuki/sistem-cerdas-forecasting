@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id(); // Kolom "id" sebagai auto-increment
             $table->year('tahun');
             $table->integer('jumlahsiswa');
-            $table->integer('n');
             $table->timestamps();
         });
     }
