@@ -11,6 +11,6 @@ class data_siswa_jurusan extends Model
     protected $table = 'data_siswa_jurusan';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'tahun','otomotif', 'media_desain', 'tkk', 'manajemen_bisnis', 'akuntansi_keuangan'
+        'id_jurusan', 'jumlah_siswa', 'tahun'
     ];
 }

@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('data_siswa_jurusan', function (Blueprint $table) {
             $table->id(); // Kolom "id" sebagai auto-increment
-            $table->year('tahun');
-            $table->Integer('otomotif');
-            $table->Integer('media_desain');
-            $table->Integer('tkk');
-            $table->Integer('manajemen_bisnis');
-            $table->Integer('akuntansi_keuangan');
+            $table->unsignedBigInteger('id_jurusan');
+            $table->integer('jumlah_siswa');
+            $table->year('tahun'); // Kolom tahun
             $table->timestamps();
+
+            $table->foreign('id_jurusan')->references('id_jurusan')->on('data_jurusan'); // Kolom waktu pembuatan dan pembaruan
         });
+        
     }
 
     public function down()

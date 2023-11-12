@@ -24,6 +24,10 @@ Route::get('/', function () {
     return view('utama');
 });
 
+Route::get('/peramalan/jurusan', function () {
+    return view('menu.peramalanjurusan');
+});
+
 
 //Kode Jurusan:
 //a = akuntansi

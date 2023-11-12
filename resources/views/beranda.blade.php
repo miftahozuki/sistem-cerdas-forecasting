@@ -60,7 +60,7 @@
         <div class="col-lg-3 col-md-6">
             <div class="card dashboard-product">
                 <span>Jumlah Seluruh Siswa</span>
-                <h2 class="dashboard-total-products">{{ $c }}</h2>
+                <h2 class="dashboard-total-products">{{ $e }}</h2>
                 <span class="label label-primary">Akuntansi dan Keuangan</span>
                 <div class="side-box">
                     <a class="info-link" data-toggle="modal" data-target="#akuntansi">
