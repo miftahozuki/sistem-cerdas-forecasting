@@ -8,6 +8,7 @@ use App\Http\Controllers\DatasiswaController;
 use App\Http\Controllers\PeramalanController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataperjurusanController;
+use App\Http\Controllers\PeramalanJurusanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +25,6 @@ Route::get('/', function () {
     return view('utama');
 });
 
-Route::get('/peramalan/jurusan', function () {
-    return view('menu.peramalanjurusan');
-});
 
 
 //Kode Jurusan:
@@ -56,6 +54,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('peramalan',PeramalanController::class);
     Route::resource('jurusan', DataperjurusanController::class);
     Route::resource('datapertahun',DatapertahunController::class);
+    Route::resource('peramalan-jurusan', PeramalanJurusanController::class);
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

@@ -14,9 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         $this->call([
-            PerhitunganSeeder::class,
             UserSeeder::class,
-            DatasiswaSeeder::class,
         ]);
     }
 }

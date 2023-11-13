@@ -62,7 +62,7 @@
                     
                 </div>
             </div>
-            @endif
+            
 
             <div class="col-sm-12">
                 <!-- Basic Table starts -->
@@ -163,7 +163,7 @@
                 </div>
                 
             </div>
-            
+            @endif
             <!-- Line Chart end -->
             <!-- 1-3-block row end -->
             
@@ -177,6 +177,15 @@
 
 @push('scripts')
 <script>
+    $(document).ready(function() {
+    $('.yearpicker').datepicker({
+        format: "yyyy",
+        viewMode: "years",
+        minViewMode: "years",
+        autoclose: true
+    });
+});
+
   var dataAktual = @json($y);
   var dataForecast = @json($dataForecast);
   var year = @json($year);
@@ -198,13 +207,6 @@
       labels: ['Data Aktual', 'Data Peramalan']
   });
 
-  $(document).ready(function() {
-    $('.yearpicker').datepicker({
-        format: "yyyy",
-        viewMode: "years",
-        minViewMode: "years",
-        autoclose: true
-    });
-});
+
   </script>
 @endpush
